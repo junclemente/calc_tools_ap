@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 <head>
     <title>Astrophotography Calculator Tools</title>
 </head>
 <body>
-    <div id="app">
-    {{ hello }}
+    <div id="app" class="container">
+        <h1>Calculate the Field of View</h1>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="sensorDimension">Dimension of Camera Sensor (mm)</label>
+                    <input type="text"
+                           name="sensorDimension"
+                           class="form-control"
+                           :value="sensorDimension"
+                           v-on:keyup="sensorDimension = $event.target.value">
+                    <small class="form-text text-muted">Enter the diagonal length of the sensor in mm</small>
+                </div>
+                <div class="form-group">
+                    <label for="focalLength">Focal length of telescope/lens (mm)</label>
+                    <input type="text"
+                           name="focalLength"
+                           class="form-control"
+                           :value="focalLength"
+                           v-on:keyup="focalLength = $event.target.value">
+                    <small class="form-text text-muted">Enter the focal length of the telescope/lens</small>
+                </div>
+            </div>
+            <div class="col">
+                <h3>The Field of View (FoV) is:</h3>
+                <p>{{ fieldOfView }} arc-minutes</p>
+            </div>
+        </div>
+        <hr>
+        <h1>Calculate the Focal Length with a Focal Reducer</h1>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="focalLengthTelescope">Focal Length of Telescope (mm)</label>
+                            <input type="text"
+                                   name="focallengthTelescope"
+                                   class="form-control"
+                                   :value="focalLengthTelescope"
+                                   v-on:keyup="focalLengthTelescope= $event.target.value">
+                            <small class="form-text text-muted">Enter focal length of the telescope</small>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="apertureOfTelescope">Telescope Aperture</label>
+                            <input type="text"
+                                   name="apertureOfTelescope"
+                                   class="form-control"
+                                   v-on:keyup="apertureOfTelescope = $event.target.value">
+                            <small class="form-text text-muted">Aperture of Telescope</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reducerAperture">Focal Length of Telescope (mm)</label>
+                    <input type="text"
+                           name="reducerAperture"
+                           class="form-control"
+                           v-on:keyup="reducerAperture = $event.target.value">
+                    <small class="form-text text-muted">Aperture of Telescope</small>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Focal Length with Reducer</h3>
+                <p>{{ focalLengthReducer }} mm</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
