@@ -5,7 +5,9 @@ new Vue({
         focalLength: 0,
         focalLengthTelescope: 0,
         apertureOfTelescope: 0,
-        reducerAperture: 0
+        reducerAperture: 0,
+        pixelSize: 0,
+        focalLengthOfTelescope2: 0
     },
     computed: {
         fieldOfView: function() {
@@ -23,6 +25,14 @@ new Vue({
                     return 0;
             } else {
                     return (( this.focalLengthTelescope * this.reducerAperture) / this.apertureOfTelescope);
+            }
+        },
+        imageResolution: function() {
+            if ((this.pixelSize == 0 || isNaN(this.pixelSize)) ||
+                (this.focalLengthOfTelescope2 == 0 || isNaN(this.focalLengthOfTelescope2))) {
+                    return 0;
+                } else {
+                    return (( 206 * this.pixelSize) / this.focalLengthOfTelescope2);
             }
         }
     }
