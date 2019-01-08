@@ -59,6 +59,7 @@
                             <input type="text"
                                    name="apertureOfTelescope"
                                    class="form-control"
+                                   :value="apertureOfTelescope"
                                    v-on:keyup="apertureOfTelescope = $event.target.value">
                             <small class="form-text text-muted">Aperture of Telescope</small>
                         </div>
@@ -69,6 +70,7 @@
                     <input type="text"
                            name="reducerAperture"
                            class="form-control"
+                           :value="reducerAperture"
                            v-on:keyup="reducerAperture = $event.target.value">
                     <small class="form-text text-muted">Aperture of Telescope</small>
                 </div>

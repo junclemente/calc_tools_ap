@@ -9,10 +9,21 @@ new Vue({
     },
     computed: {
         fieldOfView: function() {
-            return (( 3436 * this.sensorDimension) / this.focalLength);
+            if ((this.sensorDimension == 0 || isNaN(this.sensorDimension)) ||
+                (this.focalLength == 0 || isNaN(this.focalLength))) {
+                    return 0;
+                } else {
+                    return (( 3436 * this.sensorDimension) / this.focalLength).toFixed(1);
+                }
         },
         focalLengthReducer: function() {
-            return (( this.focalLengthTelescope * this.reducerAperture) / this.apertureOfTelescope);
+            if ((this.focalLengthTelescope == 0 || isNaN(this.focalLengthTelescope)) ||
+                (this.reducerAperture == 0 || isNaN(this.reducerAperture)) ||
+                (this.apertureOfTelescope == 0 || isNaN(this.apertureOfTelescope))) {
+                    return 0;
+            } else {
+                    return (( this.focalLengthTelescope * this.reducerAperture) / this.apertureOfTelescope);
+            }
         }
     }
     //     showFov: function() {
